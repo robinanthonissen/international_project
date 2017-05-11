@@ -1,0 +1,112 @@
+-- Merging decision tree log ---
+manifest
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:2:1-32:12
+	package
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:3:5-64
+		INJECTED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml
+	android:versionName
+		INJECTED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml
+	xmlns:android
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:2:11-69
+	android:versionCode
+		INJECTED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:5:5-81
+	android:name
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:5:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:6:5-79
+	android:name
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:6:22-76
+uses-permission#android.permission.BLUETOOTH
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:7:5-68
+	android:name
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:7:22-65
+uses-permission#android.permission.BLUETOOTH_ADMIN
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:8:5-74
+	android:name
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:8:22-71
+uses-feature#android.hardware.bluetooth_le
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:9:5-90
+	android:required
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:9:64-88
+	android:name
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:9:19-63
+application
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:11:5-30:19
+MERGED from [com.android.support:design:24.2.1] /Users/robinanthonissen/.android/build-cache/e702518e0cf16070b52c34e060ed5c6c53451588/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:appcompat-v7:24.2.1] /Users/robinanthonissen/.android/build-cache/f07f73f5b8c9450850ec870312251b2b5f827f1c/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-v4:24.2.1] /Users/robinanthonissen/.android/build-cache/dca2d09ed3e1433470bd818fd505586e932661b5/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-fragment:24.2.1] /Users/robinanthonissen/.android/build-cache/fa66f83ae3811a5b84b1b4ff8f3072dd776c35c3/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-media-compat:24.2.1] /Users/robinanthonissen/.android/build-cache/50881790390f69bcccc0b812f6572e79ec78d566/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-core-utils:24.2.1] /Users/robinanthonissen/.android/build-cache/86f28ce0eb9c5601aba932e95d4e85b51651d2c7/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] /Users/robinanthonissen/.android/build-cache/8ecee2f01c22c9f94f6296f99f684b1904e70890/output/AndroidManifest.xml:22:5-20
+MERGED from [com.android.support:support-vector-drawable:24.2.1] /Users/robinanthonissen/.android/build-cache/0c56c2781f7b4bf0baabd4e8980d81df3b308edf/output/AndroidManifest.xml:23:5-20
+MERGED from [com.android.support:support-core-ui:24.2.1] /Users/robinanthonissen/.android/build-cache/68c3f76b0e0092841549aec8e86e600dbd2b55b1/output/AndroidManifest.xml:25:5-20
+MERGED from [com.android.support:support-compat:24.2.1] /Users/robinanthonissen/.android/build-cache/6a0e082d494f5ee71f11eb6b3d59411b3322e69d/output/AndroidManifest.xml:25:5-20
+	android:label
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:14:9-41
+	android:supportsRtl
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:15:9-35
+	android:allowBackup
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:12:9-35
+	android:icon
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:13:9-43
+	android:theme
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:16:9-40
+activity#com.example.robinanthonissen.internationalproject.MainActivity
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:17:9-26:20
+	android:label
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:19:13-45
+	android:theme
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:20:13-56
+	android:name
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:18:13-41
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:21:13-25:29
+action#android.intent.action.MAIN
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:22:17-69
+	android:name
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:22:25-66
+category#android.intent.category.LAUNCHER
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:24:17-77
+	android:name
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:24:27-74
+activity#com.example.robinanthonissen.internationalproject.DetailActivity
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:27:9-52
+	android:name
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:27:19-49
+activity#com.example.robinanthonissen.internationalproject.AddSensorActivity
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:28:9-64
+	android:name
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:28:19-52
+service#com.example.robinanthonissen.internationalproject.BluetoothLeService
+ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:29:9-86
+	android:enabled
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:29:53-75
+	android:name
+		ADDED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml:29:18-52
+uses-sdk
+INJECTED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml reason: use-sdk injection requested
+MERGED from [com.android.support:design:24.2.1] /Users/robinanthonissen/.android/build-cache/e702518e0cf16070b52c34e060ed5c6c53451588/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:24.2.1] /Users/robinanthonissen/.android/build-cache/f07f73f5b8c9450850ec870312251b2b5f827f1c/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:support-v4:24.2.1] /Users/robinanthonissen/.android/build-cache/dca2d09ed3e1433470bd818fd505586e932661b5/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:24.2.1] /Users/robinanthonissen/.android/build-cache/fa66f83ae3811a5b84b1b4ff8f3072dd776c35c3/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:24.2.1] /Users/robinanthonissen/.android/build-cache/50881790390f69bcccc0b812f6572e79ec78d566/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-utils:24.2.1] /Users/robinanthonissen/.android/build-cache/86f28ce0eb9c5601aba932e95d4e85b51651d2c7/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:animated-vector-drawable:24.2.1] /Users/robinanthonissen/.android/build-cache/8ecee2f01c22c9f94f6296f99f684b1904e70890/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:24.2.1] /Users/robinanthonissen/.android/build-cache/0c56c2781f7b4bf0baabd4e8980d81df3b308edf/output/AndroidManifest.xml:21:5-43
+MERGED from [com.android.support:recyclerview-v7:24.2.1] /Users/robinanthonissen/.android/build-cache/62f5c502f79a13e21db61d9f7d6127a687b7fe30/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:support-core-ui:24.2.1] /Users/robinanthonissen/.android/build-cache/68c3f76b0e0092841549aec8e86e600dbd2b55b1/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-compat:24.2.1] /Users/robinanthonissen/.android/build-cache/6a0e082d494f5ee71f11eb6b3d59411b3322e69d/output/AndroidManifest.xml:21:5-23:58
+	tools:overrideLibrary
+		ADDED from [com.android.support:appcompat-v7:24.2.1] /Users/robinanthonissen/.android/build-cache/f07f73f5b8c9450850ec870312251b2b5f827f1c/output/AndroidManifest.xml:23:9-75
+	android:targetSdkVersion
+		INJECTED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml
+		INJECTED from /Users/robinanthonissen/Desktop/InternationalProject/app/src/main/AndroidManifest.xml

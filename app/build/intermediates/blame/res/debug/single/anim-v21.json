@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/res/merged/debug/anim-v21/design_appbar_state_list_animator.xml",
+        "source": "/Users/robinanthonissen/.android/build-cache/e702518e0cf16070b52c34e060ed5c6c53451588/output/res/anim-v21/design_appbar_state_list_animator.xml"
+    },
+    {
+        "merged": "/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_in.xml",
+        "source": "/Users/robinanthonissen/.android/build-cache/e702518e0cf16070b52c34e060ed5c6c53451588/output/res/anim-v21/design_bottom_sheet_slide_in.xml"
+    },
+    {
+        "merged": "/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/res/merged/debug/anim-v21/design_bottom_sheet_slide_out.xml",
+        "source": "/Users/robinanthonissen/.android/build-cache/e702518e0cf16070b52c34e060ed5c6c53451588/output/res/anim-v21/design_bottom_sheet_slide_out.xml"
+    }
+]

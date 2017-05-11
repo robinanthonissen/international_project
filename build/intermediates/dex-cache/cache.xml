@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/62f5c502f79a13e21db61d9f7d6127a687b7fe30/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7521486d9bfd2cd9e756e0cf75ed7d97f2ce2d3b">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_7efadc587c3b9ee9d1c3fd1ff8c5bc6ecf7a1b5d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/0c56c2781f7b4bf0baabd4e8980d81df3b308edf/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d5c731fc64c03dfe04d51134955b483551c35849">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_6126796e2944c82e4254f6aa5d5152b16117495a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/68c3f76b0e0092841549aec8e86e600dbd2b55b1/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e7f3132168957eefc46229fc32c3bd464642b71e">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_09ed058a09a0a61ad4fa7901a68035375b75c93a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/e702518e0cf16070b52c34e060ed5c6c53451588/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e03f47f3d1017a093bb3239d4ec47c3447f40744">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_bf7339cdc3f93d8f8d095cc455d8e784b50c1a2f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.2.1/support-annotations-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="8de3aafecbdf98a61db6427f008f2d515bcd2544">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.2.1_4b4dd0ea95fcfea4ab6ab0e18ac26f0734735030/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/68c3f76b0e0092841549aec8e86e600dbd2b55b1/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="867dad63c33388ff8c7644b236579355036d075f">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_ef8664e0e0767d2cf102b3f97020af1312fb88f2/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/50881790390f69bcccc0b812f6572e79ec78d566/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="09b462bbcb77650284bd6614f1a32f360ef369f8">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8e01db3d9be004c5cbbc3a027ef8874ac8b57d96/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/fa66f83ae3811a5b84b1b4ff8f3072dd776c35c3/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="5f64d657e838e8375135c0f6057a7ff8fab6a50e">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_5aa8a922f4ab35b980db5eef28b2c5beb87543c9/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/f07f73f5b8c9450850ec870312251b2b5f827f1c/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="43b2dba6b5a0b14527961b75329d0b90025f15ea">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_cd0dc1f16e09da0559655f3a56d53120ac24594f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/6a0e082d494f5ee71f11eb6b3d59411b3322e69d/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="7e4389bd133359a2ff88623ff1e4ff93d6e6f780">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_abf774573fb6fbfb2b9f433c69c89a12f04bf10c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/86f28ce0eb9c5601aba932e95d4e85b51651d2c7/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="9c4c3bc902450c39ed54de170db4fb12aea20a35">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ee4cfebbd69f3a1ba9b1e0214deca9c2306608a8/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/fa66f83ae3811a5b84b1b4ff8f3072dd776c35c3/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b9a1ac78ad7ef3abedc4a4b30cd92bcacb939d1f">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_ea38990a9d0b41417ee4fa687666b3ca92e44d5a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/50881790390f69bcccc0b812f6572e79ec78d566/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="fbf8da429efd5ad21e02e3e5ecaa1efc4167878d">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_b7fbe16af219b6ae2846b6f07503da174246aead/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/dca2d09ed3e1433470bd818fd505586e932661b5/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_1d57f2f4d0ad600d381d45cf2b0a4b24a6b968ad/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/6a0e082d494f5ee71f11eb6b3d59411b3322e69d/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="0ecb4b595fa0f0f8018a149ace3ea6525624f94e">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_9f55c047ab4a520821a6db90ade116c23455da14/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/86f28ce0eb9c5601aba932e95d4e85b51651d2c7/output/jars/libs/internal_impl-24.2.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="935a969265b2a166b2d20415423f5f6e90fe16e0">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.2.1_0dc377afbd689903e3866d01865e1fb898691e62/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/Users/robinanthonissen/.android/build-cache/8ecee2f01c22c9f94f6296f99f684b1904e70890/output/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.0"
+        sha1="94bc1dfb84dcc8b6f6f8f7cc726d7b2dd39c1574">
+        <dex dex="/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_03bde98a62fd3ab5ac701147cc0af326fa479514/classes.dex" />
+    </item>
+
+</items>
