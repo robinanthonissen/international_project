@@ -77,7 +77,6 @@ public class Sensor {  //implements Parcelable {
     private final String LIST_UUID = "UUID";
     public final static UUID UUID_HEART_RATE_MEASUREMENT =
             UUID.fromString(SampleGattAttributes.HEART_RATE_MEASUREMENT);
-    //public UUID hearRateCharUUID = new UUID()
 
     String heartB;
 
@@ -131,34 +130,17 @@ public class Sensor {  //implements Parcelable {
         mDeviceName = btDev.getName();
 
         Intent gattServiceIntent = new Intent(context, BluetoothLeService.class);
-        mBluetoothLeService = new BluetoothLeService();
 
-        mServiceConnection = new ServiceConnection() {
+        //mBluetoothLeService.bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+        //displayGattServices(mBluetoothLeService.getSupportedGattServices());
 
-            @Override
-            public void onServiceConnected(ComponentName componentName, IBinder service) {
-                mBluetoothLeService = ((BluetoothLeService.LocalBinder) service).getService();
-                if (!mBluetoothLeService.initialize()) {
-                    Log.e(TAG, "Unable to initialize Bluetooth");
-                    //finish();
-                }
-                // Automatically connects to the device upon successful start-up initialization.
-                mBluetoothLeService.connect(mDeviceAddress);
+        if(characteristic != null) {
+            mBluetoothLeService.registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
+            if (mBluetoothLeService != null) {
+                final boolean result = mBluetoothLeService.connect(mDeviceAddress);
+                Log.d(TAG, "Connect request result=" + result);
             }
-
-            @Override
-            public void onServiceDisconnected(ComponentName componentName) {
-                mBluetoothLeService = null;
-            }
-        };
-        if (mBluetoothLeService == null) {
-            mBluetoothLeService = new BluetoothLeService();
         }
-        //Log.d("gattServiceIntent", gattServiceIntent.getType());
-        Log.d("mServiceConnection", mServiceConnection.toString());
-        mBluetoothLeService.bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
-        displayGattServices(mBluetoothLeService.getSupportedGattServices());
-
 
         if (mGattCharacteristics != null) {
             for (ArrayList<BluetoothGattCharacteristic> BTchar : mGattCharacteristics){
@@ -188,13 +170,7 @@ public class Sensor {  //implements Parcelable {
             }
         }
 
-        if(characteristic != null) {
-            mBluetoothLeService.registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
-            if (mBluetoothLeService != null) {
-                final boolean result = mBluetoothLeService.connect(mDeviceAddress);
-                Log.d(TAG, "Connect request result=" + result);
-            }
-        }
+
 
     }
 
@@ -248,6 +224,54 @@ public class Sensor {  //implements Parcelable {
     private void displayGattServices(List<BluetoothGattService> gattServices) {
         if (gattServices == null) return;
         String uuid = null;
+        String unknownServiceString = "unknown_service";
+        String unknownCharaString = "unknown_characteristic";
+        ArrayList<HashMap<String, String>> gattServiceData = new ArrayList<HashMap<String, String>>();
+        ArrayList<ArrayList<HashMap<String, String>>> gattCharacteristicData
+                = new ArrayList<ArrayList<HashMap<String, String>>>();
+        mGattCharacteristics = new ArrayList<ArrayList<BluetoothGattCharacteristic>>();
+
+        // Loops through available GATT Services.
+        for (BluetoothGattService gattService : gattServices) {
+            HashMap<String, String> currentServiceData = new HashMap<String, String>();
+            uuid = gattService.getUuid().toString();
+            currentServiceData.put(
+                    LIST_NAME, SampleGattAttributes.lookup(uuid, unknownServiceString));
+            currentServiceData.put(LIST_UUID, uuid);
+            gattServiceData.add(currentServiceData);
+
+            ArrayList<HashMap<String, String>> gattCharacteristicGroupData =
+                    new ArrayList<HashMap<String, String>>();
+            List<BluetoothGattCharacteristic> gattCharacteristics =
+                    gattService.getCharacteristics();
+            ArrayList<BluetoothGattCharacteristic> charas =
+                    new ArrayList<BluetoothGattCharacteristic>();
+
+            // Loops through available Characteristics.
+            for (BluetoothGattCharacteristic gattCharacteristic : gattCharacteristics) {
+                charas.add(gattCharacteristic);
+                HashMap<String, String> currentCharaData = new HashMap<String, String>();
+                uuid = gattCharacteristic.getUuid().toString();
+                currentCharaData.put(
+                        LIST_NAME, SampleGattAttributes.lookup(uuid, unknownCharaString));
+                currentCharaData.put(LIST_UUID, uuid);
+                gattCharacteristicGroupData.add(currentCharaData);
+            }
+            mGattCharacteristics.add(charas);
+            gattCharacteristicData.add(gattCharacteristicGroupData);
+        }
+    }
+
+
+
+
+
+
+
+
+    /*private void displayGattServices(List<BluetoothGattService> gattServices) {
+        if (gattServices == null) return;
+        String uuid = null;
         ArrayList<HashMap<String, String>> gattServiceData = new ArrayList<HashMap<String, String>>();
         ArrayList<ArrayList<HashMap<String, String>>> gattCharacteristicData
                 = new ArrayList<ArrayList<HashMap<String, String>>>();
@@ -272,7 +296,7 @@ public class Sensor {  //implements Parcelable {
             // Loops through available Characteristics.
             for (BluetoothGattCharacteristic gattCharacteristic : gattCharacteristics) {
                 charas.add(gattCharacteristic);
-                HashMap<String, String> currentCharaData = new HashMap<String, String>();
+                /*HashMap<String, String> currentCharaData = new HashMap<String, String>();
                 uuid = gattCharacteristic.getUuid().toString();
                 currentCharaData.put(
                         LIST_NAME, SampleGattAttributes.lookup(uuid, "unknownChara"));
@@ -281,13 +305,13 @@ public class Sensor {  //implements Parcelable {
                             LIST_NAME, SampleGattAttributes.lookup(uuid, "unknownChara"));
                 }
                 currentCharaData.put(LIST_UUID, uuid);
-                gattCharacteristicGroupData.add(currentCharaData);
-            }
+                gattCharacteristicGroupData.add(currentCharaData);*/
+          /*  }
             mGattCharacteristics.add(charas);
             gattCharacteristicData.add(gattCharacteristicGroupData);
         }
 
-    }
+    }*/
 
 
     private static IntentFilter makeGattUpdateIntentFilter() {
