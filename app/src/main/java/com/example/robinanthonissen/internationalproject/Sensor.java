@@ -77,46 +77,10 @@ public class Sensor {  //implements Parcelable {
     private final String LIST_UUID = "UUID";
     public final static UUID UUID_HEART_RATE_MEASUREMENT =
             UUID.fromString(SampleGattAttributes.HEART_RATE_MEASUREMENT);
-
     String heartB;
+    private ServiceConnection mServiceConnection;
+    private BroadcastReceiver mGattUpdateReceiver;
 
-    private ServiceConnection mServiceConnection;/* = new ServiceConnection() {
-
-        @Override
-        public void onServiceConnected(ComponentName componentName, IBinder service) {
-            mBluetoothLeService = ((BluetoothLeService.LocalBinder) service).getService();
-            if (!mBluetoothLeService.initialize()) {
-                Log.e(TAG, "Unable to initialize Bluetooth");
-                //finish();
-            }
-            // Automatically connects to the device upon successful start-up initialization.
-            mBluetoothLeService.connect(mDeviceAddress);
-        }
-
-        @Override
-        public void onServiceDisconnected(ComponentName componentName) {
-            mBluetoothLeService = null;
-        }
-    };*/
-
-    private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
-        @Override
-        public void onReceive(Context context, Intent intent) {
-            final String action = intent.getAction();
-            if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action)) {
-                mConnected = true;
-            } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
-                mConnected = false;
-            } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
-                // Show all the supported services and characteristics on the user interface.
-                displayGattServices(mBluetoothLeService.getSupportedGattServices());
-            } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
-                //displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA)); voorbeeld code display data
-                //TODO: code om heart rate data te displayen
-                heartB = intent.getStringExtra(BluetoothLeService.EXTRA_DATA);
-            }
-        }
-    };
 
     public Sensor(String name){
         this.name = name;
@@ -129,6 +93,7 @@ public class Sensor {  //implements Parcelable {
         name = btDev.getName();
         mDeviceAddress = btDev.getAddress();
         mDeviceName = btDev.getName();
+
         mServiceConnection = new ServiceConnection() {
 
             @Override
@@ -148,62 +113,38 @@ public class Sensor {  //implements Parcelable {
             }
         };
 
-        //displayGattServices(mBluetoothLeService.getSupportedGattServices());
+        mGattUpdateReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                final String action = intent.getAction();
+                if (BluetoothLeService.ACTION_GATT_CONNECTED.equals(action)) {
+                    mConnected = true;
+                    Log.d("Gatt Connected", String.valueOf(mConnected));
+                } else if (BluetoothLeService.ACTION_GATT_DISCONNECTED.equals(action)) {
+                    mConnected = false;
+                } else if (BluetoothLeService.ACTION_GATT_SERVICES_DISCOVERED.equals(action)) {
+                    // Show all the supported services and characteristics on the user interface.
+                    displayGattServices(mBluetoothLeService.getSupportedGattServices());
+                    Log.d("In mGattUpdateReceiver", "Services Discoverd");
+                } else if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
+                    //displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA)); voorbeeld code display data
+                    //TODO: code om heart rate data te displayen
+                    Log.d("In ActionDataAvailable", "");
+                    heartB = intent.getStringExtra(BluetoothLeService.EXTRA_DATA);
+                }
+            }
+        };
 
         Intent gattServiceIntent = new Intent(context, BluetoothLeService.class);
         Log.d("ServiceConnection", mServiceConnection.toString());
         Log.d("BTsensor", btDev.toString());
-        //Log.d("mBluetoothLeService", mBluetoothLeService.toString());
         context.bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
-        //displayGattServices(mBluetoothLeService.getSupportedGattServices());
 
-
-
-        /*if(characteristic != null) {
-            mBluetoothLeService.registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
-            if (mBluetoothLeService != null) {
-                final boolean result = mBluetoothLeService.connect(mDeviceAddress);
-                Log.d(TAG, "Connect request result=" + result);
-            }
-        }*/
-
-        if (mGattCharacteristics != null) {
-            for (ArrayList<BluetoothGattCharacteristic> BTchar : mGattCharacteristics){
-                for (BluetoothGattCharacteristic btCHAR : BTchar){
-                    if (btCHAR.getUuid() == UUID_HEART_RATE_MEASUREMENT){
-                        characteristic = btCHAR;
-                        Log.d("Characteristic", String.valueOf(characteristic.getProperties()));
-                    }
-                }
-            }
-            if(characteristic != null) {
-                mBluetoothLeService.registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
-                if (mBluetoothLeService != null) {
-                    final boolean result = mBluetoothLeService.connect(mDeviceAddress);
-                    Log.d(TAG, "Connect request result=" + result);
-                }
-            }
-            if (characteristic != null) {
-                final int charaProp = characteristic.getProperties();
-                if ((charaProp | BluetoothGattCharacteristic.PROPERTY_READ) > 0) {
-                    // If there is an active notification on a characteristic, clear
-                    // it first so it doesn't update the data field on the user interface.
-                    if (mNotifyCharacteristic != null) {
-                        mBluetoothLeService.setCharacteristicNotification(mNotifyCharacteristic, false);
-                        mNotifyCharacteristic = null;
-                    }
-                    mBluetoothLeService.readCharacteristic(characteristic);
-                }
-                if ((charaProp | BluetoothGattCharacteristic.PROPERTY_NOTIFY) > 0) {
-                    mNotifyCharacteristic = characteristic;
-                    mBluetoothLeService.setCharacteristicNotification(characteristic, true);
-                    Log.d("NotifyChar", String.valueOf(mNotifyCharacteristic.getDescriptor(UUID_HEART_RATE_MEASUREMENT)));
-                }
-            }
+        context.registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
+        if (mBluetoothLeService != null) {
+            final boolean result = mBluetoothLeService.connect(mDeviceAddress);
+            Log.d(TAG, "Connect request result=" + result);
         }
-
-
-
     }
 
     private String name = null;
@@ -219,9 +160,9 @@ public class Sensor {  //implements Parcelable {
     public int getHeartBeat(){
         return heartBeat;
     }
-    public void setHeartBeat(int heartBeat){
+    /*public void setHeartBeat(int heartBeat){
         this.heartBeat = heartBeat;
-    }
+    }*/
 
     private int weight = 0;
     public int getWeight(){
@@ -254,6 +195,7 @@ public class Sensor {  //implements Parcelable {
 
 
     private void displayGattServices(List<BluetoothGattService> gattServices) {
+        Log.d("In displayGattServices", "");
         if (gattServices == null) return;
         String uuid = null;
         String unknownServiceString = "unknown_service";
@@ -272,6 +214,7 @@ public class Sensor {  //implements Parcelable {
             currentServiceData.put(LIST_UUID, uuid);
             gattServiceData.add(currentServiceData);
 
+            Log.d("Gatt Service: ", String.valueOf( gattService.getType()) + gattService.getUuid().toString());
             ArrayList<HashMap<String, String>> gattCharacteristicGroupData =
                     new ArrayList<HashMap<String, String>>();
             List<BluetoothGattCharacteristic> gattCharacteristics =
@@ -288,11 +231,18 @@ public class Sensor {  //implements Parcelable {
                         LIST_NAME, SampleGattAttributes.lookup(uuid, unknownCharaString));
                 currentCharaData.put(LIST_UUID, uuid);
                 gattCharacteristicGroupData.add(currentCharaData);
+                Log.d("Gatt Characteristic", gattCharacteristic.getUuid().toString());
+
+                if (gattCharacteristic.getUuid().toString() == "00002a37-0000-1000-8000-00805f9b34fb"){
+                    characteristic = gattCharacteristic;
+                    Log.d("Yes yes yes", "");
+                    Log.d("Characteristic", String.valueOf(characteristic.getProperties()));
+
+                }
             }
             mGattCharacteristics.add(charas);
             gattCharacteristicData.add(gattCharacteristicGroupData);
         }
-    }
 
 
 
@@ -300,51 +250,24 @@ public class Sensor {  //implements Parcelable {
 
 
 
-
-    /*private void displayGattServices(List<BluetoothGattService> gattServices) {
-        if (gattServices == null) return;
-        String uuid = null;
-        ArrayList<HashMap<String, String>> gattServiceData = new ArrayList<HashMap<String, String>>();
-        ArrayList<ArrayList<HashMap<String, String>>> gattCharacteristicData
-                = new ArrayList<ArrayList<HashMap<String, String>>>();
-        mGattCharacteristics = new ArrayList<ArrayList<BluetoothGattCharacteristic>>();
-
-        // Loops through available GATT Services.
-        for (BluetoothGattService gattService : gattServices) {
-            HashMap<String, String> currentServiceData = new HashMap<String, String>();
-            uuid = gattService.getUuid().toString();
-            currentServiceData.put(
-                    LIST_NAME, SampleGattAttributes.lookup(uuid, "unknownService"));
-            currentServiceData.put(LIST_UUID, uuid);
-            gattServiceData.add(currentServiceData);
-
-            ArrayList<HashMap<String, String>> gattCharacteristicGroupData =
-                    new ArrayList<HashMap<String, String>>();
-            List<BluetoothGattCharacteristic> gattCharacteristics =
-                    gattService.getCharacteristics();
-            ArrayList<BluetoothGattCharacteristic> charas =
-                    new ArrayList<BluetoothGattCharacteristic>();
-
-            // Loops through available Characteristics.
-            for (BluetoothGattCharacteristic gattCharacteristic : gattCharacteristics) {
-                charas.add(gattCharacteristic);
-                /*HashMap<String, String> currentCharaData = new HashMap<String, String>();
-                uuid = gattCharacteristic.getUuid().toString();
-                currentCharaData.put(
-                        LIST_NAME, SampleGattAttributes.lookup(uuid, "unknownChara"));
-                if (uuid == String.valueOf(UUID_HEART_RATE_MEASUREMENT)){
-                    HeartRateCharaData.put(
-                            LIST_NAME, SampleGattAttributes.lookup(uuid, "unknownChara"));
+        if (characteristic != null) {
+            final int charaProp = characteristic.getProperties();
+            if ((charaProp | BluetoothGattCharacteristic.PROPERTY_READ) > 0) {
+                // If there is an active notification on a characteristic, clear
+                // it first so it doesn't update the data field on the user interface.
+                if (mNotifyCharacteristic != null) {
+                    mBluetoothLeService.setCharacteristicNotification(mNotifyCharacteristic, false);
+                    mNotifyCharacteristic = null;
                 }
-                currentCharaData.put(LIST_UUID, uuid);
-                gattCharacteristicGroupData.add(currentCharaData);*/
-          /*  }
-            mGattCharacteristics.add(charas);
-            gattCharacteristicData.add(gattCharacteristicGroupData);
+                mBluetoothLeService.readCharacteristic(characteristic);
+            }
+            if ((charaProp | BluetoothGattCharacteristic.PROPERTY_NOTIFY) > 0) {
+                mNotifyCharacteristic = characteristic;
+                mBluetoothLeService.setCharacteristicNotification(characteristic, true);
+                Log.d("NotifyChar", String.valueOf(mNotifyCharacteristic.getDescriptor(UUID_HEART_RATE_MEASUREMENT)));
+            }
         }
-
-    }*/
-
+    }
 
     private static IntentFilter makeGattUpdateIntentFilter() {
         final IntentFilter intentFilter = new IntentFilter();
