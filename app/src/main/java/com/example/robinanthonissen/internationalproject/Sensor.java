@@ -80,7 +80,7 @@ public class Sensor {  //implements Parcelable {
 
     String heartB;
 
-    private ServiceConnection mServiceConnection = new ServiceConnection() {
+    private ServiceConnection mServiceConnection;/* = new ServiceConnection() {
 
         @Override
         public void onServiceConnected(ComponentName componentName, IBinder service) {
@@ -97,7 +97,7 @@ public class Sensor {  //implements Parcelable {
         public void onServiceDisconnected(ComponentName componentName) {
             mBluetoothLeService = null;
         }
-    };
+    };*/
 
     private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
         @Override
@@ -123,24 +123,49 @@ public class Sensor {  //implements Parcelable {
 
 
     }
+
     public Sensor(BluetoothDevice btDev, Context context){
         BTSensor = btDev;
         name = btDev.getName();
         mDeviceAddress = btDev.getAddress();
         mDeviceName = btDev.getName();
+        mServiceConnection = new ServiceConnection() {
 
-        Intent gattServiceIntent = new Intent(context, BluetoothLeService.class);
+            @Override
+            public void onServiceConnected(ComponentName componentName, IBinder service) {
+                mBluetoothLeService = ((BluetoothLeService.LocalBinder) service).getService();
+                if (!mBluetoothLeService.initialize()) {
+                    Log.e(TAG, "Unable to initialize Bluetooth");
+                    //finish();
+                }
+                // Automatically connects to the device upon successful start-up initialization.
+                mBluetoothLeService.connect(mDeviceAddress);
+            }
 
-        //mBluetoothLeService.bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+            @Override
+            public void onServiceDisconnected(ComponentName componentName) {
+                mBluetoothLeService = null;
+            }
+        };
+
         //displayGattServices(mBluetoothLeService.getSupportedGattServices());
 
-        if(characteristic != null) {
+        Intent gattServiceIntent = new Intent(context, BluetoothLeService.class);
+        Log.d("ServiceConnection", mServiceConnection.toString());
+        Log.d("BTsensor", btDev.toString());
+        //Log.d("mBluetoothLeService", mBluetoothLeService.toString());
+        context.bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);
+        //displayGattServices(mBluetoothLeService.getSupportedGattServices());
+
+
+
+        /*if(characteristic != null) {
             mBluetoothLeService.registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
             if (mBluetoothLeService != null) {
                 final boolean result = mBluetoothLeService.connect(mDeviceAddress);
                 Log.d(TAG, "Connect request result=" + result);
             }
-        }
+        }*/
 
         if (mGattCharacteristics != null) {
             for (ArrayList<BluetoothGattCharacteristic> BTchar : mGattCharacteristics){
@@ -149,6 +174,13 @@ public class Sensor {  //implements Parcelable {
                         characteristic = btCHAR;
                         Log.d("Characteristic", String.valueOf(characteristic.getProperties()));
                     }
+                }
+            }
+            if(characteristic != null) {
+                mBluetoothLeService.registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
+                if (mBluetoothLeService != null) {
+                    final boolean result = mBluetoothLeService.connect(mDeviceAddress);
+                    Log.d(TAG, "Connect request result=" + result);
                 }
             }
             if (characteristic != null) {

@@ -39,6 +39,7 @@ import android.widget.SimpleExpandableListAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -98,7 +99,12 @@ public class MainActivity extends AppCompatActivity {
     // ACTION_GATT_SERVICES_DISCOVERED: discovered GATT services.
     // ACTION_DATA_AVAILABLE: received data from the device.  This can be a result of read
     //                        or notification operations.
-    private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
+
+
+
+
+
+    /*private final BroadcastReceiver mGattUpdateReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
             final String action = intent.getAction();
@@ -118,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
                displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
             }
         }
-    };
+    };*/
 
     private void clearUI() {
         listSensors.setAdapter(arrAdapter);
@@ -211,6 +217,7 @@ public class MainActivity extends AppCompatActivity {
 
                 String newSenName = data.getStringExtra("name");
                 String newSenAddress = data.getStringExtra("address");
+                BluetoothDevice btDev = data.getParcelableExtra("btDev");
                 deviceAddresses.add(newSenAddress);
 
                 testSenAddress = newSenAddress;
@@ -248,6 +255,8 @@ public class MainActivity extends AppCompatActivity {
                 BluetoothDevice newSen = mBluetoothAdapter.getRemoteDevice(newSenAddress);
                 Sensor newSensor = new Sensor(newSen, this);
                 sensors.add(newSensor);
+                Sensor sen = new Sensor(btDev, this);
+                //sensors.add(sen);
 
                 /*if (mGattCharacteristics != null) {
                     //final BluetoothGattCharacteristic characteristic =
@@ -309,7 +318,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
+        //registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
         if (mBluetoothLeService != null && !testSenAddress.isEmpty()) {
             final boolean result = mBluetoothLeService.connect(testSenAddress);
             Log.d("", "Connect request result=" + result);
@@ -319,7 +328,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        unregisterReceiver(mGattUpdateReceiver);
+        //unregisterReceiver(mGattUpdateReceiver);
     }
 
     @Override

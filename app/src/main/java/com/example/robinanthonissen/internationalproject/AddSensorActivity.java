@@ -150,6 +150,7 @@ public class AddSensorActivity extends AppCompatActivity {
                 final Intent intent = new Intent(AddSensorActivity.this, MainActivity.class);
                 intent.putExtra("name", device.getName());
                 intent.putExtra("address", device.getAddress());
+                intent.putExtra("btDev", device);
                 if (mScanning) {
                     mBluetoothAdapter.stopLeScan(mLeScanCallback);
                     mScanning = false;
