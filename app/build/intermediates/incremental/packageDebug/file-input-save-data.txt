@@ -1,5 +1,5 @@
 #Internal package file, do not edit.
-#Thu May 18 15:09:46 CEST 2017
+#Thu May 18 16:38:52 CEST 2017
 210.set=ANDROID_RESOURCE
 14.set=ANDROID_RESOURCE
 180.file=/Users/robinanthonissen/Desktop/InternationalProject/app/build/intermediates/res/resources-debug.ap_/res/drawable/navigation_empty_icon.xml

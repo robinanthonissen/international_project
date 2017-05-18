@@ -214,7 +214,7 @@ public class Sensor {  //implements Parcelable {
             currentServiceData.put(LIST_UUID, uuid);
             gattServiceData.add(currentServiceData);
 
-            Log.d("Gatt Service: ", String.valueOf( gattService.getType()) + gattService.getUuid().toString());
+            Log.d("Gatt Service", String.valueOf( gattService.getType()) + gattService.getUuid().toString());
             ArrayList<HashMap<String, String>> gattCharacteristicGroupData =
                     new ArrayList<HashMap<String, String>>();
             List<BluetoothGattCharacteristic> gattCharacteristics =
@@ -227,13 +227,11 @@ public class Sensor {  //implements Parcelable {
                 charas.add(gattCharacteristic);
                 HashMap<String, String> currentCharaData = new HashMap<String, String>();
                 uuid = gattCharacteristic.getUuid().toString();
-                currentCharaData.put(
-                        LIST_NAME, SampleGattAttributes.lookup(uuid, unknownCharaString));
+                currentCharaData.put(LIST_NAME, SampleGattAttributes.lookup(uuid, unknownCharaString));
                 currentCharaData.put(LIST_UUID, uuid);
                 gattCharacteristicGroupData.add(currentCharaData);
                 Log.d("Gatt Characteristic", gattCharacteristic.getUuid().toString());
-
-                if (gattCharacteristic.getUuid().toString() == "00002a37-0000-1000-8000-00805f9b34fb"){
+                if (gattCharacteristic.getUuid().toString() == "00002a37-0000-1000-8000-00805f9b34fb" || String.valueOf(gattCharacteristic.getUuid()) == "00002a37-0000-1000-8000-00805f9b34fb"){
                     characteristic = gattCharacteristic;
                     Log.d("Yes yes yes", "");
                     Log.d("Characteristic", String.valueOf(characteristic.getProperties()));
@@ -245,11 +243,37 @@ public class Sensor {  //implements Parcelable {
         }
 
 
+        /*for (ArrayList<BluetoothGattCharacteristic> charas : mGattCharacteristics){
+            for (BluetoothGattCharacteristic charac: charas){
+                if (charac.getUuid().toString() == "00002a37-0000-1000-8000-00805f9b34fb"){
+                    Log.d("Yes yes","");
+                }
+            }
+        }*/
 
 
 
 
+        subscribeHeartRate();
+    }
 
+    private void subscribeHeartRate(){
+        /*for (int i = 0; i<mGattCharacteristics.size(); i++){
+            for (int j = 0; j<mGattCharacteristics.get(i).size(); j++){
+                if (mGattCharacteristics.get(i).get(j).getUuid().toString() == "00002a37-0000-1000-8000-00805f9b34fb"){
+                    Log.d("Yes yes","");
+                }
+            }
+        }*/
+
+        for (ArrayList<BluetoothGattCharacteristic> charas : mGattCharacteristics){
+            for (BluetoothGattCharacteristic charac: charas){
+                if (charac.getUuid().toString().equals("00002a37-0000-1000-8000-00805f9b34fb")){
+                    Log.e("yesyesyes", "");
+                    characteristic = charac;
+                }
+            }
+        }
         if (characteristic != null) {
             final int charaProp = characteristic.getProperties();
             if ((charaProp | BluetoothGattCharacteristic.PROPERTY_READ) > 0) {
